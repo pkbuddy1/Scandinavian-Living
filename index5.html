@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Scandinavian Living Room - Design Inspiration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #37474F;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #455A64;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #78909C;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #455A64;
+            font-weight: 500;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #78909C;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #78909C;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #455A64;
+        }
+        
+        /* Banner/Slider Styles */
+        .banner {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 80%;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .slide-title {
+            font-size: 48px;
+            font-weight: 600;
+            color: #37474F;
+            margin-bottom: 15px;
+        }
+        
+        .slide-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            color: #607D8B;
+        }
+        
+        .slide-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .slide-btn {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 0 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .slide-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .slide-indicators {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 600;
+            color: #37474F;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #78909C;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #546E7A;
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInRight 1s ease;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: #f1f3f5;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(69, 90, 100, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-overlay p {
+            font-size: 16px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease 0.1s;
+        }
+        
+        .gallery-item:hover .gallery-overlay h3,
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+        
+        /* Tips Section */
+        .tips-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tip-icon {
+            font-size: 36px;
+            color: #78909C;
+            margin-bottom: 20px;
+        }
+        
+        .tip-card h3 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #455A64;
+            margin-bottom: 15px;
+        }
+        
+        .tip-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #607D8B;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #37474F;
+            color: #f5f5f5;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #78909C;
+        }
+        
+        .footer-column p,
+        .footer-column li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #B0BEC5;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-column ul li:hover {
+            transform: translateX(5px);
+        }
+        
+        .footer-column ul li a {
+            color: #B0BEC5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #f5f5f5;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #f5f5f5;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #78909C;
+            transform: scale(1.1);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #90A4AE;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .slide-title {
+                font-size: 36px;
+            }
+            
+            .slide-subtitle {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-home"></i>
+                Scandinavian Living
+            </a>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Banner/Slider -->
+    <section class="banner" id="home">
+        <!-- Slide 1 - Title Slide -->
+        <div class="slide active" style="background-image: url('https://sfile.chatglm.cn/images-ppt/bcda93b3eb24.jpg');">
+            <div class="slide-content">
+                <h1 class="slide-title">Minimalist Scandinavian Living Room</h1>
+                <h2 class="slide-subtitle">Cozy & Clean Aesthetic</h2>
+            </div>
+        </div>
+        
+        <!-- Slide 2 - Design Principles -->
+        <div class="slide" style="background-image: url('https://sfile.chatglm.cn/images-ppt/3e711a26ef4b.jpg');">
+            <div class="slide-content">
+                <h1 class="slide-title">Scandinavian Design Principles</h1>
+                <h2 class="slide-subtitle">Minimalism, Functionality, Simplicity & Coziness</h2>
+            </div>
+        </div>
+        
+        <!-- Slide 3 - Colors & Materials -->
+        <div class="slide" style="background-image: url('https://sfile.chatglm.cn/images-ppt/6b92a3d0333f.jpg');">
+            <div class="slide-content">
+                <h1 class="slide-title">Colors & Materials</h1>
+                <h2 class="slide-subtitle">Neutral Palettes & Natural Elements</h2>
+            </div>
+        </div>
+        
+        <!-- Slide 4 - Furniture & Layout -->
+        <div class="slide" style="background-image: url('https://sfile.chatglm.cn/images-ppt/dc1eb28725b4.jpg');">
+            <div class="slide-content">
+                <h1 class="slide-title">Furniture & Layout</h1>
+                <h2 class="slide-subtitle">Clean Lines & Functional Spaces</h2>
+            </div>
+        </div>
+        
+        <!-- Slide 5 - Lighting & Decor -->
+        <div class="slide" style="background-image: url('https://sfile.chatglm.cn/images-ppt/249f15606d5e.jpg');">
+            <div class="slide-content">
+                <h1 class="slide-title">Lighting & Decor</h1>
+                <h2 class="slide-subtitle">Natural Light & Minimal Accents</h2>
+            </div>
+        </div>
+        
+        <!-- Slide 6 - Creating Your Space -->
+        <div class="slide" style="background-image: url('https://sfile.chatglm.cn/images-ppt/3fa21adc9bbc.jpg');">
+            <div class="slide-content">
+                <h1 class="slide-title">Creating Your Scandinavian Space</h1>
+                <h2 class="slide-subtitle">Balance, Light & Natural Elements</h2>
+            </div>
+        </div>
+        
+        <!-- Slide Navigation -->
+        <div class="slide-nav">
+            <button class="slide-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="slide-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+                <div class="indicator" data-slide="3"></div>
+                <div class="indicator" data-slide="4"></div>
+                <div class="indicator" data-slide="5"></div>
+            </div>
+            
+            <button class="slide-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <h2 class="section-title">About Scandinavian Design</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Scandinavian design emerged in the 1950s in the Nordic countries of Denmark, Norway, Sweden, Finland, and Iceland. It's characterized by simplicity, minimalism, and functionality that has influenced design worldwide.</p>
+                <p>At its core, Scandinavian design embraces the concept of "hygge" (Danish) or "koselig" (Norwegian) - a feeling of cozy contentment and well-being through enjoying the simple things in life. This philosophy is reflected in interiors that are both beautiful and livable.</p>
+                <p>The design principles focus on clean lines, minimal ornamentation, and a connection to nature. Natural light is maximized, spaces are kept uncluttered, and materials are chosen for their quality and sustainability.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://sfile.chatglm.cn/images-ppt/467d91805323.jpg" alt="Scandinavian living room">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-container">
+            <h2 class="section-title">Scandinavian Living Room Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://sfile.chatglm.cn/images-ppt/c09a70d9fa1e.jpg" alt="Bright Scandinavian living room">
+                    <div class="gallery-overlay">
+                        <h3>Bright & Airy</h3>
+                        <p>Maximizing natural light with large windows and minimal window treatments</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sfile.chatglm.cn/images-ppt/ad04afa4b308.png" alt="Cozy Scandinavian corner">
+                    <div class="gallery-overlay">
+                        <h3>Cozy Corner</h3>
+                        <p>Creating comfortable nooks with soft textiles and warm lighting</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sfile.chatglm.cn/images-ppt/3992f782a4dd.jpg" alt="Minimalist furniture">
+                    <div class="gallery-overlay">
+                        <h3>Minimalist Furniture</h3>
+                        <p>Clean-lined pieces that combine form and function</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sfile.chatglm.cn/images-ppt/0a3275872df1.jpg" alt="Natural materials">
+                    <div class="gallery-overlay">
+                        <h3>Natural Materials</h3>
+                        <p>Incorporating wood, stone, and textiles for warmth and texture</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sfile.chatglm.cn/images-ppt/55c0c1732588.jpg" alt="Art and decor">
+                    <div class="gallery-overlay">
+                        <h3>Thoughtful Decor</h3>
+                        <p>Curated art pieces and plants that add personality without clutter</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://sfile.chatglm.cn/images-ppt/912cda9c18c0.jpg" alt="Plants in Scandinavian design">
+                    <div class="gallery-overlay">
+                        <h3>Bringing Nature Indoors</h3>
+                        <p>Using plants to add life and color to neutral spaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tips Section -->
+    <section class="tips-section" id="tips">
+        <h2 class="section-title">Tips & Inspiration</h2>
+        <div class="tips-container">
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Embrace Neutrals</h3>
+                <p>Start with a neutral base of whites, grays, and beiges. Add subtle color through textiles and accessories for a calm, cohesive look.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Layer Your Lighting</h3>
+                <p>Combine ambient, task, and accent lighting. Use pendant lights, floor lamps, and candles to create a warm, inviting atmosphere.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3>Invest in Quality</h3>
+                <p>Choose fewer, higher-quality pieces that will last. Scandinavian design values craftsmanship and longevity over fast furniture trends.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-ruler-combined"></i>
+                </div>
+                <h3>Consider Scale</h3>
+                <p>Select furniture that fits your space appropriately. Low-profile furniture can make rooms feel larger and more open.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Add Natural Elements</h3>
+                <p>Incorporate plants, natural wood, and organic materials to bring warmth and life to minimalist spaces.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <i class="fas fa-broom"></i>
+                </div>
+                <h3>Declutter Regularly</h3>
+                <p>Embrace the minimalist philosophy by regularly editing your belongings. Keep only what you love and what serves a purpose.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We're passionate about Scandinavian design and helping you create beautiful, functional living spaces that reflect the minimalist Nordic aesthetic.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Scandinavian Design</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#tips">Design Tips</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Design Resources</h3>
+                <ul>
+                    <li><a href="#">Color Palettes</a></li>
+                    <li><a href="#">Furniture Guide</a></li>
+                    <li><a href="#">Lighting Ideas</a></li>
+                    <li><a href="#">Material Selection</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@scandinavianliving.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Design Street, Copenhagen</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Scandinavian Living. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Slider Functionality
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all indicators
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Show current slide
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            
+            // Update current slide index
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                showSlide(currentSlide + 1);
+            } else {
+                showSlide(0); // Loop back to first slide
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            } else {
+                showSlide(slides.length - 1); // Loop to last slide
+            }
+        }
+        
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+        
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopSlideShow();
+            startSlideShow();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopSlideShow();
+            startSlideShow();
+        });
+        
+        // Indicator clicks
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+                stopSlideShow();
+                startSlideShow();
+            });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                stopSlideShow();
+                startSlideShow();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopSlideShow();
+                startSlideShow();
+            }
+        });
+        
+        // Start the slideshow
+        startSlideShow();
+        
+        // Pause slideshow on hover
+        const banner = document.querySelector('.banner');
+        banner.addEventListener('mouseenter', stopSlideShow);
+        banner.addEventListener('mouseleave', startSlideShow);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.tip-card, .gallery-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
